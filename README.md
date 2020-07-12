@@ -736,3 +736,68 @@ VAR=valor $comando_a_ejecutar
 scripting bash
 
 bash no es solo un lenguaje de comandos, tambien es un lenguaje de programcion con el cual se pueden crear archivos `.sh` para ejecutar tareas especificas
+
+## Cómo y para qué dejar tareas programadas
+
+### at
+
+con la ejecucion del comando `at` para ejecutar comandos en el futuro
+
+se ejecutara un comando en un minuto
+
+```sh
+at now +1 minutes
+```
+
+luego sale el input de at para escribir las ejecuciones en bash
+
+```sh
+at> echo "Hola mundo" > hola.txt
+```
+
+luego para terminar de hacer input de use el *CTRL+D*
+
+### cron
+
+tareas programadas del sistema
+
+crontab permite acceder a un archivo en el cual se puden dejar tareas programadas en el sistema para que se ejecuten automaticamente dada una fecha y hora
+
+abrir el crontab de tareas programadas
+
+```sh
+crontab -e
+```
+
+instrucciones del crontab
+
+```sh
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+```
+
+para agrega un comando en el contrab se debe espeficicar
+
+```sh
+$minute $hour $day_of_the_month $month_of_the_year $day_of_week $command
+```
